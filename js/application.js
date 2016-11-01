@@ -8,9 +8,9 @@ function onDataChange(e){
   } else {
     Character[attrName] = $(e.target).val();
   }
-  var encoded = location.href.split("?c=")[0] + "?c=" + JSON.stringify(Character);
-  console.log(encoded);
-  //location.href = location.href.split("?c=")[0] + "?c=" + encoded;
+  Character['apiVersion'] = '1.0'
+  var encoded = location.href.split("#")[0] + "#" + btoa(JSON.stringify(Character));
+  location.href = encoded; 
 }
 
 function loadCharacter(){
@@ -27,9 +27,9 @@ function loadCharacter(){
 }
 
 function loadData(){
-  var encodedJSON = location.href.split("?c=")[1];
+  var encodedJSON = location.href.split("#")[1];
   if (encodedJSON) {
-    var json = decodeURI(encodedJSON);
+    var json = decodeURI(atob(encodedJSON));
     Character = JSON.parse(json);
     loadCharacter();
   }
