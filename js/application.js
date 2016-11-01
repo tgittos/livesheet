@@ -1,8 +1,13 @@
 var Character = {};
 
 function onDataChange(e){
+  var inputType = $(e.target).attr('type');
   var attrName = e.target.id;
-  Character[attrName] = $(e.target).val();
+  if (inputType && inputType == 'checkbox') {
+    Character[attrName] = $(e.target).is(':checked');
+  } else {
+    Character[attrName] = $(e.target).val();
+  }
   var encoded = location.href.split("?c=")[0] + "?c=" + JSON.stringify(Character);
   console.log(encoded);
   //location.href = location.href.split("?c=")[0] + "?c=" + encoded;
@@ -10,14 +15,25 @@ function onDataChange(e){
 
 function loadCharacter(){
   $('.data').each(function(){
-    $(this).val(Character[this.id]);
+    var inputType = $(this).attr('type');
+    if (inputType && inputType == 'checkbox') {
+      if (Character[this.id]) {
+        $(this).attr('checked', 'checked');
+      }
+    } else {
+      $(this).val(Character[this.id]);
+    }
   });
 }
 
 $(document).ready(function(){
   // set up listeners
   $('.data').each(function(){
+    var inputType = $(this).attr('type');
     $(this).keyup(onDataChange);
+    if(inputType && inputType == 'checkbox') {
+      $(this).change(onDataChange);
+    }
   });
 
   // load data into app
