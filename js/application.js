@@ -26,6 +26,15 @@ function loadCharacter(){
   });
 }
 
+function loadData(){
+  var encodedJSON = location.href.split("?c=")[1];
+  if (encodedJSON) {
+    var json = decodeURI(encodedJSON);
+    Character = JSON.parse(json);
+    loadCharacter();
+  }
+}
+
 $(document).ready(function(){
   // set up listeners
   $('.data').each(function(){
@@ -37,10 +46,5 @@ $(document).ready(function(){
   });
 
   // load data into app
-  var encodedJSON = location.href.split("?c=")[1];
-  if (encodedJSON) {
-    var json = decodeURI(encodedJSON);
-    Character = JSON.parse(json);
-    loadCharacter();
-  }
+  loadData();
 });
