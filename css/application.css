@@ -211,3 +211,51 @@
   height: 300px;
   font-size: 0.8em;
 }
+
+.passive_perception input {
+  width: 30px;
+  height: 30px;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.passive_perception .label {
+  margin-left: 30px;
+}
+
+.passive_perception {
+  margin-bottom: 20px;
+}
+
+.proficiencies_languages textarea {
+  width: 90%;
+  height: 100px;
+}
+
+.money {
+  float: left;
+  width: 25%;
+  height: 200px;
+}
+
+.money span {
+  display: inline-block;
+  width: 30px;
+}
+
+.money input {
+  width: 25px;
+  height: 25px;
+  text-align: center;
+}
+
+.equipment {
+  float: right;
+  width: 74%;
+  height: 200px;
+}
+
+.equipment textarea {
+  height: 100%;
+  width: 95%;
+}

@@ -1,6 +1,6 @@
 var Character = {};
 
-function onDataChange(e){
+function buildCharacter(e){
   var inputType = $(e.target).attr('type');
   var attrName = e.target.id;
   if (inputType && inputType == 'checkbox') {
@@ -9,8 +9,18 @@ function onDataChange(e){
     Character[attrName] = $(e.target).val();
   }
   Character['apiVersion'] = '1.0'
+  if (!Character['apiKey']) {
+    Character['apiKey'] = btoa(Character['txt_character_name']);
+  }
+}
+
+function onDataChange(e){
+  buildCharacter(e);
   var encoded = location.href.split("#")[0] + "#" + btoa(JSON.stringify(Character));
   location.href = encoded; 
+  if(Character['txt_character_name']) {
+    document.title = "Livesheet - " + Character['txt_character_name'];
+  }
 }
 
 function loadCharacter(){
@@ -24,6 +34,9 @@ function loadCharacter(){
       $(this).val(Character[this.id]);
     }
   });
+  if(Character['txt_character_name']) {
+    document.title = "Livesheet - " + Character['txt_character_name'];
+  }
 }
 
 function loadData(){
