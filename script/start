@@ -1,0 +1,2 @@
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+bundle exec unicorn -c $DIR/../unicorn.rb -E production -D
