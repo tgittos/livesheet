@@ -26,3 +26,97 @@
 .label.character_level {
   margin-left: 50%;
 }
+
+.stat_block {
+  margin-bottom: 20px;
+}
+
+.stat_block .label {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.stat_block input {
+  display: block;
+  margin: auto;
+}
+
+.stat_block .score {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.stat_block .bonus {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+
+.inspiration, .proficiency, .saving_throws {
+  margin-bottom: 20px;
+}
+
+#txt_inspiration, #txt_proficiency {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+
+.inspiration span, .proficiency span {
+  margin-left: 20px;
+}
+
+.saving_throws > span, .skills > span {
+  font-weight: 600;
+  font-size: 0.6em;
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.saving_throw input, .skill input {
+  width: 20px;
+  height: 15px;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+.saving_throw span, .skill span {
+  font-size: 0.6em;
+}
+
+.skill {
+  margin-top: 2px;
+}
+
+.ac_init_speed input {
+  width: 50px;
+  height: 50px;
+  font-size: 1.2em;
+  text-align: center;
+  margin: auto;
+  display: block;
+}
+
+.ac_init_speed > div {
+  display: inline-block;
+  width: 30%;
+}
+
+.ac_init_speed .label {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 2px;
+}
+
+#txt_ac {
+  width: 40px;
+  height: 40px;
+}
+
