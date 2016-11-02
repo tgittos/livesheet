@@ -1,5 +1,9 @@
 var Character = {};
 
+function writeToDatabase(c) {
+  $.post("/character", { apiKey: c['apiKey'], data: JSON.stringify(c) });
+}
+
 function buildCharacter(e){
   var inputType = $(e.target).attr('type');
   var attrName = e.target.id;
@@ -12,12 +16,11 @@ function buildCharacter(e){
   if (!Character['apiKey']) {
     Character['apiKey'] = btoa(Character['txt_character_name']);
   }
+  writeToDatabase(Character);
 }
 
 function onDataChange(e){
   buildCharacter(e);
-  var encoded = location.href.split("#")[0] + "#" + btoa(JSON.stringify(Character));
-  location.href = encoded; 
   if(Character['txt_character_name']) {
     document.title = "Livesheet - " + Character['txt_character_name'];
   }
@@ -40,11 +43,13 @@ function loadCharacter(){
 }
 
 function loadData(){
-  var encodedJSON = location.href.split("#")[1];
-  if (encodedJSON) {
-    var json = decodeURI(atob(encodedJSON));
-    Character = JSON.parse(json);
-    loadCharacter();
+  var apiKey = location.href.split("/")[1];
+  if (apiKey) {
+    $.getJSON('/character/' + apiKey, function(success){
+      var json = success["charData"];
+      Character = JSON.parse(json);
+      loadCharacter();
+    });
   }
 }
 
