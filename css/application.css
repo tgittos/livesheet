@@ -69,7 +69,7 @@
   margin-left: 20px;
 }
 
-.saving_throws > span, .skills > span {
+.saving_throws > span, .skills > span, .attacks > span {
   font-weight: 600;
   font-size: 0.6em;
   display: block;
@@ -92,6 +92,10 @@
 
 .skill {
   margin-top: 2px;
+}
+
+.combat > div {
+  margin-bottom: 30px;
 }
 
 .ac_init_speed input {
@@ -120,3 +124,90 @@
   height: 40px;
 }
 
+.max_hitpoints span {
+  color: gray;
+  font-size: 0.6em;
+}
+
+.current_hitpoints_body input, .temp_hitpoints input {
+  display: block;
+  width: 100%;
+  height: 50px;
+  font-size: 2em;
+  text-align: center;
+}
+
+.current_hitpoints_body .label, .temp_hitpoints .label {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 2px;
+}
+
+#txt_total_hd {
+  width: 76px;
+}
+
+#lbl_total_hd {
+  color: gray;
+  font-size: 0.6em;
+}
+
+#txt_hd {
+  width: 100px;
+  display: block;
+  text-align: center;
+}
+
+.hit_die_death_saves > div {
+  display: inline-block;
+  width: 49%;
+}
+
+.death_saves > div {
+  margin: 4px 0;
+}
+
+.death_saves > span {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.successes span, .failures span {
+  display: inline-block;
+  width: 90px;
+}
+
+.attacks input {
+  width: 95%;
+}
+
+.attacks table {
+  width: 340px;
+}
+
+.attacks th.label {
+  color: gray;
+  text-align: left;
+}
+
+.attacks .bonus, .attacks .damage {
+  width: 25%;
+  padding: 0 4px;
+}
+
+.background textarea {
+  width: 100%;
+  height: 60px;
+}
+
+.background > div {
+  margin-bottom: 20px;
+}
+
+#txt_features_traits {
+  height: 300px;
+  font-size: 0.8em;
+}

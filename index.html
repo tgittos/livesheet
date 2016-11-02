@@ -213,7 +213,7 @@
             <span>Skills</span>
           </div>
         </div> <!-- skill col -->
-        <div class="col 3_of_9">
+        <div class="combat col 3_of_9">
           <div class="ac_init_speed">
             <div class="ac">
               <input id="txt_ac" class="data" />
@@ -230,85 +230,91 @@
           </div>
           <div class="hitpoints">
             <div class="current_hitpoints">
-              <span>Hit Point Maximum</span>
-              <input id="txt_hp_max" class="data" />
-              <input id="txt_current_hp" class="data" />
-              <span>Current Hit Points</span>
+              <div class="max_hitpoints">
+                <span>Hit Point Maximum</span>
+                <input id="txt_hp_max" class="data" />
+              </div>
+              <div class="current_hitpoints_body">
+                <input id="txt_current_hp" class="data" />
+                <span class="label">Current Hit Points</span>
+              </div>
             </div>
             <div class="temp_hitpoints">
               <input id="txt_temp_hp" class="data" />
-              <span>Temporary Hit Points</span>
+              <span class="label">Temporary Hit Points</span>
             </div>
           </div>
           <div class="hit_die_death_saves">
             <div class="hit_die">
-              <span>Total</span>
+              <span id="lbl_total_hd">Total</span>
               <input id="txt_total_hd" class="data" />
               <input id="txt_hd" class="data" />
-              <span>Hit Dice</span>
+              <span class="label">Hit Dice</span>
             </div>
             <div class="death_saves">
               <div class="successes">
-                <span>Successes</span>
+                <span class="label">Successes</span>
                 <input type="checkbox" id="cb_death_success_1" class="data" />
                 <input type="checkbox" id="cb_death_success_2" class="data" />
                 <input type="checkbox" id="cb_death_success_3" class="data" />
               </div>
               <div class="failures">
-                <span>Failures</span>
+                <span class="label">Failures</span>
                 <input type="checkbox" id="cb_death_failure_1" class="data" />
                 <input type="checkbox" id="cb_death_failure_2" class="data" />
                 <input type="checkbox" id="cb_death_failure_3" class="data" />
               </div>
-              <span>Death Saves</span>
+              <span class="label">Death Saves</span>
             </div>
           </div>
           <div class="attacks">
             <table>
               <thead>
-                <td>Name</td><td>Atk Bonus</td><td>Damage/Type</td>
+                <th class="label">Name</th>
+                <th class="label bonus">Atk Bonus</th>
+                <th class="label damage">Damage/Type</th>
               </thead>
               <tbody>
                 <tr>
                   <td><input id="txt_attack_1_name" class="data" /></td>
-                  <td><input id="txt_attack_1_bonus" class="data" /></td>
-                  <td><input id="txt_attack_1_dmg" class="data" /></td>
+                  <td class="bonus"><input id="txt_attack_1_bonus" class="data" /></td>
+                  <td class="damage"><input id="txt_attack_1_dmg" class="data" /></td>
                 </tr>
                 <tr>
                   <td><input id="txt_attack_2_name" class="data" /></td>
-                  <td><input id="txt_attack_2_bonus" class="data" /></td>
-                  <td><input id="txt_attack_2_dmg" class="data" /></td>
+                  <td class="bonus"><input id="txt_attack_2_bonus" class="data" /></td>
+                  <td class="damage"><input id="txt_attack_2_dmg" class="data" /></td>
                 </tr>
                 <tr>
                   <td><input id="txt_attack_3_name" class="data" /></td>
-                  <td><input id="txt_attack_3_bonus" class="data" /></td>
-                  <td><input id="txt_attack_3_dmg" class="data" /></td>
+                  <td class="bonus"><input id="txt_attack_3_bonus" class="data" /></td>
+                  <td class="damage"><input id="txt_attack_3_dmg" class="data" /></td>
                 </tr>
               </tbody>
             </table>
             <span>Attacks &amp; Spellcasting</span>
           </div>
         </div> <!-- combat stats col -->
-        <div class="col 3_of_9">
+        <div class="background col 3_of_9">
           <div class="personality_traits">
             <textarea id="txt_personality_traits" class="data"></textarea>
-            <span>Personality Traits</span>
+            <span class="label">Personality Traits</span>
           </div>
           <div class="ideals">
             <textarea id="txt_ideals" class="data"></textarea>
-            <span>Ideals</span>
+            <span class="label">Ideals</span>
           </div>
           <div class="bonds">
             <textarea id="txt_bonds" class="data"></textarea>
-            <span>Bonds</span>
+            <span class="label">Bonds</span>
           </div>
           <div class="flaws">
             <textarea id="txt_flaws" class="data"></textarea>
-            <span>Flaws</span>
+            <span class="label">Flaws</span>
           </div>
           <div class="features_traits">
             <textarea id="txt_features_traits" class="data"></textarea>
-            <span>Features &amp; Traits</span>
+            <span class="label">Features &amp; Traits</span>
           </div>
         </div> <!-- background deets -->
       </div> <!-- section group -->
