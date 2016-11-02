@@ -2,3 +2,27 @@
   width: 1024px;
   margin: auto;
 }
+
+.label {
+  font-size: 0.6em;
+  text-transform: uppercase;
+}
+
+.header_data input {
+  width: 100%;
+  display: block;
+}
+
+#txt_class {
+  width: 62%;
+  display: inline;
+}
+
+#txt_level {
+  width: 30%;
+  display: inline;
+}
+
+.label.character_level {
+  margin-left: 50%;
+}
