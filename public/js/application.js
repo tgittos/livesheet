@@ -1,5 +1,3 @@
-var Character = {};
-
 function writeToDatabase(c) {
   $.post("/character", { apiKey: c['apiKey'], data: JSON.stringify(c) });
 }
@@ -13,9 +11,6 @@ function buildCharacter(e){
     Character[attrName] = $(e.target).val();
   }
   Character['apiVersion'] = '1.0'
-  if (!Character['apiKey']) {
-    Character['apiKey'] = btoa(Character['txt_character_name']);
-  }
   writeToDatabase(Character);
 }
 
@@ -43,14 +38,16 @@ function loadCharacter(){
 }
 
 function loadData(){
-  var apiKey = location.href.split("/")[1];
-  if (apiKey) {
-    $.getJSON('/character/' + apiKey, function(success){
-      var json = success["charData"];
-      Character = JSON.parse(json);
-      loadCharacter();
-    });
+  if (!Character) {
+    var apiKey = location.href.split("/")[1];
+    if (apiKey) {
+      $.getJSON('/character/' + apiKey, function(success){
+        var json = success["charData"];
+        Character = JSON.parse(json);
+      });
+    }
   }
+  loadCharacter();
 }
 
 $(document).ready(function(){
