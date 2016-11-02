@@ -130,9 +130,165 @@
               <input id="txt_animal_handling" class="data" />
               <span>Animal Handling <em>(Wis)</em></span>
             </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_arcana" class="data" />
+              <input id="txt_arcana" class="data" />
+              <span>Arcana <em>(Int)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_athletics" class="data" />
+              <input id="txt_athletics" class="data" />
+              <span>Athletics <em>(Int)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_deception" class="data" />
+              <input id="txt_deception" class="data" />
+              <span>Deception <em>(Cha)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_history" class="data" />
+              <input id="txt_history" class="data" />
+              <span>History <em>(Int)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_insight" class="data" />
+              <input id="txt_insight" class="data" />
+              <span>Insight <em>(Wis)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_intimidation" class="data" />
+              <input id="txt_intimidation" class="data" />
+              <span>Intimidation <em>(Cha)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_investigation" class="data" />
+              <input id="txt_investigation" class="data" />
+              <span>Investigation <em>(Int)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_medicine" class="data" />
+              <input id="txt_medicine" class="data" />
+              <span>Medicine <em>(Wis)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_nature" class="data" />
+              <input id="txt_nature" class="data" />
+              <span>Nature <em>(Int)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_perception" class="data" />
+              <input id="txt_perception" class="data" />
+              <span>Perception <em>(Wis)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_performance" class="data" />
+              <input id="txt_performance" class="data" />
+              <span>Performance <em>(Cha)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_persuasion" class="data" />
+              <input id="txt_persuasion" class="data" />
+              <span>Persuasion <em>(Cha)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_religion" class="data" />
+              <input id="txt_religion" class="data" />
+              <span>Religion <em>(Int)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_sleight_of_hand" class="data" />
+              <input id="txt_sleight_of_hand" class="data" />
+              <span>Sleight of Hand <em>(Dex)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_stealth" class="data" />
+              <input id="txt_stealth" class="data" />
+              <span>Stealth <em>(Dex)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_survival" class="data" />
+              <input id="txt_survival" class="data" />
+              <span>Survival <em>(Wis)</em></span>
+            </div>
             <span>Skills</span>
           </div>
         </div> <!-- skill col -->
+        <div class="col 3_of_9">
+          <div class="ac_init_speed">
+            <div class="ac">
+              <input id="txt_ac" class="data" />
+              <span>Armor Class</span>
+            </div>
+            <div class="init">
+              <input id="txt_initiative" class="data" />
+              <span>Initiative</span>
+            </div>
+            <div class="speed">
+              <input id="txt_speed" class="data" />
+              <span>Speed</span>
+            </div>
+          </div>
+          <div class="hitpoints">
+            <div class="current_hitpoints">
+              <span>Hit Point Maximum</span>
+              <input id="txt_hp_max" class="data" />
+              <input id="txt_current_hp" class="data" />
+              <span>Current Hit Points</span>
+            </div>
+            <div class="temp_hitpoints">
+              <input id="txt_temp_hp" class="data" />
+              <span>Temporary Hit Points</span>
+            </div>
+          </div>
+          <div class="hit_die_death_saves">
+            <div class="hit_die">
+              <span>Total</span>
+              <input id="txt_total_hd" class="data" />
+              <input id="txt_hd" class="data" />
+              <span>Hit Dice</span>
+            </div>
+            <div class="death_saves">
+              <div class="successes">
+                <span>Successes</span>
+                <input type="checkbox" id="cb_death_success_1" class="data" />
+                <input type="checkbox" id="cb_death_success_2" class="data" />
+                <input type="checkbox" id="cb_death_success_3" class="data" />
+              </div>
+              <div class="failures">
+                <span>Failures</span>
+                <input type="checkbox" id="cb_death_failure_1" class="data" />
+                <input type="checkbox" id="cb_death_failure_2" class="data" />
+                <input type="checkbox" id="cb_death_failure_3" class="data" />
+              </div>
+              <span>Death Saves</span>
+            </div>
+          </div>
+          <div class="attacks">
+            <table>
+              <thead>
+                <td>Name</td><td>Atk Bonus</td><td>Damage/Type</td>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input id="txt_attack_1_name" class="data" /></td>
+                  <td><input id="txt_attack_1_bonus" class="data" /></td>
+                  <td><input id="txt_attack_1_dmg" class="data" /></td>
+                </tr>
+                <tr>
+                  <td><input id="txt_attack_2_name" class="data" /></td>
+                  <td><input id="txt_attack_2_bonus" class="data" /></td>
+                  <td><input id="txt_attack_2_dmg" class="data" /></td>
+                </tr>
+                <tr>
+                  <td><input id="txt_attack_3_name" class="data" /></td>
+                  <td><input id="txt_attack_3_bonus" class="data" /></td>
+                  <td><input id="txt_attack_3_dmg" class="data" /></td>
+                </tr>
+              </tbody>
+            </table>
+            <span>Attacks &amp; Spellcasting</span>
+          </div>
+        </div> <!-- combat stats col -->
       </div> <!-- section group -->
     </div> <!-- application -->
   </body>
