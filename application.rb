@@ -23,19 +23,36 @@ get "/" do
 end
 
 get "/:apiKey" do
-  @character = find_or_init_character(params['apiKey'])
-  erb :index
+  unless params['apiKey'].nil?
+    read_only = params['apiKey'] =~ /ro$/
+    api_key = params['apiKey'].gsub(/ro$/, '')
+    @character = find_or_init_character(api_key)
+    data = JSON.parse(@character.charData)
+    data["apiKey"] += 'ro' if read_only
+    @character.charData = data.to_json
+    erb :index
+  else
+    render :nothing
+  end
 end
 
 post "/character" do
-  character = find_or_init_character(params['apiKey'])
-  character.charData = params['data']
-  character.updated_at = Time.now
-  character.save
+  read_only = params['apiKey'] =~ /ro$/
+  api_key = params['apiKey'].gsub(/ro$/, '')
+  unless read_only
+    character = find_or_init_character(api_key)
+    character.charData = params['data']
+    character.updated_at = Time.now
+    character.save
+  end
 end
 
 get "/character/:apiKey" do
-  Character.first(apiKey: params['apiKey']).to_json
+  read_only = params['apiKey'] =~ /ro$/
+  api_key = params['apiKey'].gsub(/ro$/, '')
+  character = Character.first(apiKey: api_key)
+  character.apiKey += 'ro' if read_only
+  character.to_json
 end
 
 def find_or_init_character(api_key)

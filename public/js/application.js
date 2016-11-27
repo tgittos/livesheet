@@ -47,6 +47,7 @@ function loadData(){
       });
     }
   }
+  console.log('character:', Character);
   loadCharacter();
 }
 
