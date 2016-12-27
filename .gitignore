@@ -2,3 +2,4 @@
 *.swp
 db/*.db
 *.log
+node_modules
