@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Livesheet</title>
+    <base href="/" >
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/application.css">
@@ -15,6 +16,16 @@
   </head>
   <body>
     <div id="application">
+      <div class="section group">
+        <div class="col span_9_of_9">
+          <div id="sheetSelector">
+            <select>
+              <option value="dnd5e" selected="selected">D&amp;D 5e</option>
+              <option value="pathfinder">Pathfinder</option>
+            </select>
+          </div>
+        </div>
+      </div>
       <div class="section group header_data">
         <div class="col span_3_of_9">
           <input id="txt_character_name" class="data" />

@@ -19,10 +19,14 @@ Character.auto_upgrade!
 
 get "/" do
   new_api_key = Base64.strict_encode64(Time.now.to_i.to_s)
-  redirect to("/#{new_api_key}")
+  redirect to("/dnd5e/#{new_api_key}")
 end
 
 get "/:apiKey" do
+  redirect "/dnd5e/#{params['apiKey']}"
+end
+
+get "/dnd5e/:apiKey" do
   unless params['apiKey'].nil?
     read_only = params['apiKey'] =~ /ro$/
     api_key = params['apiKey'].gsub(/ro$/, '')
@@ -30,12 +34,25 @@ get "/:apiKey" do
     data = JSON.parse(@character.charData)
     data["apiKey"] += 'ro' if read_only
     @character.charData = data.to_json
-    erb :index
+    erb :dnd5e
   else
     render :nothing
   end
 end
 
+get "/pathfinder/:apiKey" do
+  unless params['apiKey'].nil?
+    read_only = params['apiKey'] =~ /ro$/
+    api_key = params['apiKey'].gsub(/ro$/, '')
+    @character = find_or_init_character(api_key)
+    data = JSON.parse(@character.charData)
+    data["apiKey"] += 'ro' if read_only
+    @character.charData = data.to_json
+    erb :pathfinder
+  else
+    render :nothing
+  end
+end
 post "/character" do
   read_only = params['apiKey'] =~ /ro$/
   api_key = params['apiKey'].gsub(/ro$/, '')
@@ -58,7 +75,7 @@ end
 def find_or_init_character(api_key)
   character = Character.first(apiKey: api_key)
   if (character.nil?)
-    character = Character.new(apiKey: api_key, charData: { apiKey: api_key }.to_json)
+    character = Character.new(apiKey: api_key, charData: { apiKey: api_key, apiVersion: '1.1' }.to_json)
   end
   character
 end

@@ -1,0 +1,757 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Livesheet</title>
+    <base href="/" >
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/application.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <% if !@character.nil? %>
+    <script>
+      window.Character = <%= @character.charData %>
+    </script>
+    <% end %>
+    <script src="js/application.js"></script>
+  </head>
+  <body>
+    <div id="application">
+      <div class="section group">
+        <div class="col span_9_of_9">
+          <div id="sheetSelector">
+            <select>
+              <option value="dnd5e">D&amp;D 5e</option>
+              <option value="pathfinder" selected="selected">Pathfinder</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="section group header_data">
+        <div class="col span_3_of_9">
+          <input id="txt_character_name" class="data" />
+          <span class="label">Character name</span>
+        </div>
+        <div class="col span_2_of_9">
+          <div>
+            <input id="txt_class" class="data" />
+            <input id="txt_level" class="data" />
+            <span class="label">Class</span>
+            <span class="label character_level">Level</span>
+          </div>
+          <div>
+            <input id="txt_race" class="data" />
+            <span class="label">Race</span>
+          </div>
+        </div>
+        <div class="col span_2_of_9">
+          <div>
+            <input id="txt_background" class="data" />
+            <span class="label">Background</span>
+            <input id="txt_alignment" class="data" />
+            <span class="label">Alignment</span>
+          </div>
+        </div>
+        <div class="col span_2_of_9">
+          <div>
+            <input id="txt_player_name" class="data" />
+            <span class="label">Player name</span>
+            <input id="txt_experience" class="data" />
+            <span class="label">Experience</span>
+          </div>
+        </div>
+      </div> <!-- section group -->
+      <div class="section group">
+        <div class="col span_1_of_9">
+          <div class="stat_block">
+            <span class="label">Strength</span>
+            <input id="txt_strength_score" class="data score" />
+            <input id="txt_strength_bonus" class="data bonus" />
+          </div>
+          <div class="stat_block">
+            <span class="label">Dexterity</span>
+            <input id="txt_dexterity_score" class="data score" />
+            <input id="txt_dexterity_bonus" class="data bonus" />
+          </div>
+          <div class="stat_block">
+            <span class="label">Constitution</span>
+            <input id="txt_constitution_score" class="data score" />
+            <input id="txt_constitution_bonus" class="data bonus" />
+          </div>
+          <div class="stat_block">
+            <span class="label">Intelligence</span>
+            <input id="txt_intelligence_score" class="data score" />
+            <input id="txt_intelligence_bonus" class="data bonus" />
+          </div>
+          <div class="stat_block">
+            <span class="label">Wisdom</span>
+            <input id="txt_wisdom_score" class="data score" />
+            <input id="txt_wisdom_bonus" class="data bonus" />
+          </div>
+          <div class="stat_block">
+            <span class="label">Charisma</span>
+            <input id="txt_charisma_score" class="data score" />
+            <input id="txt_charisma_bonus" class="data bonus" />
+          </div>
+        </div> <!-- stat col -->
+        <div class="col span_2_of_9">
+          <div class="inspiration">
+            <input id="txt_inspiration" class="data" />
+            <span class="label">Inspiration</span>
+          </div>
+          <div class="proficiency">
+            <input id="txt_proficiency" class="data" />
+            <span class="label">Proficiency Bonus</span>
+          </div>
+          <div class="saving_throws">
+            <div class="saving_throw">
+              <input type="checkbox" id="cb_str_save" class="data" />
+              <input id="txt_str_save" class="data" />
+              <span>Strength</span>
+            </div>
+            <div class="saving_throw">
+              <input type="checkbox" id="cb_dex_save" class="data" />
+              <input id="txt_dex_save" class="data" />
+              <span>Dexterity</span>
+            </div>
+            <div class="saving_throw">
+              <input type="checkbox" id="cb_con_save" class="data" />
+              <input id="txt_con_save" class="data" />
+              <span>Constitution</span>
+            </div>
+            <div class="saving_throw">
+              <input type="checkbox" id="cb_int_save" class="data" />
+              <input id="txt_int_save" class="data" />
+              <span>Intelligence</span>
+            </div>
+            <div class="saving_throw">
+              <input type="checkbox" id="cb_wis_save" class="data" />
+              <input id="txt_wis_save" class="data" />
+              <span>Wisdom</span>
+            </div>
+            <div class="saving_throw">
+              <input type="checkbox" id="cb_cha_save" class="data" />
+              <input id="txt_cha_save" class="data" />
+              <span>Charisma</span>
+            </div>
+            <span>Saving Throws</span>
+          </div>
+          <div class="skills">
+            <div class="skill">
+              <input type="checkbox" id="cb_acrobatics" class="data" />
+              <input id="txt_acrobatics" class="data" />
+              <span>Acrobatics <em>(Dex)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_animal_handling" class="data" />
+              <input id="txt_animal_handling" class="data" />
+              <span>Animal Handling <em>(Wis)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_arcana" class="data" />
+              <input id="txt_arcana" class="data" />
+              <span>Arcana <em>(Int)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_athletics" class="data" />
+              <input id="txt_athletics" class="data" />
+              <span>Athletics <em>(Str)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_deception" class="data" />
+              <input id="txt_deception" class="data" />
+              <span>Deception <em>(Cha)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_history" class="data" />
+              <input id="txt_history" class="data" />
+              <span>History <em>(Int)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_insight" class="data" />
+              <input id="txt_insight" class="data" />
+              <span>Insight <em>(Wis)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_intimidation" class="data" />
+              <input id="txt_intimidation" class="data" />
+              <span>Intimidation <em>(Cha)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_investigation" class="data" />
+              <input id="txt_investigation" class="data" />
+              <span>Investigation <em>(Int)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_medicine" class="data" />
+              <input id="txt_medicine" class="data" />
+              <span>Medicine <em>(Wis)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_nature" class="data" />
+              <input id="txt_nature" class="data" />
+              <span>Nature <em>(Int)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_perception" class="data" />
+              <input id="txt_perception" class="data" />
+              <span>Perception <em>(Wis)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_performance" class="data" />
+              <input id="txt_performance" class="data" />
+              <span>Performance <em>(Cha)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_persuasion" class="data" />
+              <input id="txt_persuasion" class="data" />
+              <span>Persuasion <em>(Cha)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_religion" class="data" />
+              <input id="txt_religion" class="data" />
+              <span>Religion <em>(Int)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_sleight_of_hand" class="data" />
+              <input id="txt_sleight_of_hand" class="data" />
+              <span>Sleight of Hand <em>(Dex)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_stealth" class="data" />
+              <input id="txt_stealth" class="data" />
+              <span>Stealth <em>(Dex)</em></span>
+            </div>
+            <div class="skill">
+              <input type="checkbox" id="cb_survival" class="data" />
+              <input id="txt_survival" class="data" />
+              <span>Survival <em>(Wis)</em></span>
+            </div>
+            <span>Skills</span>
+          </div>
+        </div> <!-- skill col -->
+        <div class="combat col span_3_of_9">
+          <div class="ac_init_speed">
+            <div class="ac">
+              <input id="txt_ac" class="data" />
+              <span class="label">Armor Class</span>
+            </div>
+            <div class="init">
+              <input id="txt_initiative" class="data" />
+              <span class="label">Initiative</span>
+            </div>
+            <div class="speed">
+              <input id="txt_speed" class="data" />
+              <span class="label">Speed</span>
+            </div>
+          </div>
+          <div class="hitpoints">
+            <div class="current_hitpoints">
+              <div class="max_hitpoints">
+                <span>Hit Point Maximum</span>
+                <input id="txt_hp_max" class="data" />
+              </div>
+              <div class="current_hitpoints_body">
+                <input id="txt_current_hp" class="data" />
+                <span class="label">Current Hit Points</span>
+              </div>
+            </div>
+            <div class="temp_hitpoints">
+              <input id="txt_temp_hp" class="data" />
+              <span class="label">Temporary Hit Points</span>
+            </div>
+          </div>
+          <div class="hit_die_death_saves">
+            <div class="hit_die">
+              <span id="lbl_total_hd">Total</span>
+              <input id="txt_total_hd" class="data" />
+              <input id="txt_hd" class="data" />
+              <span class="label">Hit Dice</span>
+            </div>
+            <div class="death_saves">
+              <div class="successes">
+                <span class="label">Successes</span>
+                <input type="checkbox" id="cb_death_success_1" class="data" />
+                <input type="checkbox" id="cb_death_success_2" class="data" />
+                <input type="checkbox" id="cb_death_success_3" class="data" />
+              </div>
+              <div class="failures">
+                <span class="label">Failures</span>
+                <input type="checkbox" id="cb_death_failure_1" class="data" />
+                <input type="checkbox" id="cb_death_failure_2" class="data" />
+                <input type="checkbox" id="cb_death_failure_3" class="data" />
+              </div>
+              <span class="label">Death Saves</span>
+            </div>
+          </div>
+          <div class="attacks">
+            <table>
+              <thead>
+                <th class="label">Name</th>
+                <th class="label bonus">Atk Bonus</th>
+                <th class="label damage">Damage/Type</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input id="txt_attack_1_name" class="data" /></td>
+                  <td class="bonus"><input id="txt_attack_1_bonus" class="data" /></td>
+                  <td class="damage"><input id="txt_attack_1_dmg" class="data" /></td>
+                </tr>
+                <tr>
+                  <td><input id="txt_attack_2_name" class="data" /></td>
+                  <td class="bonus"><input id="txt_attack_2_bonus" class="data" /></td>
+                  <td class="damage"><input id="txt_attack_2_dmg" class="data" /></td>
+                </tr>
+                <tr>
+                  <td><input id="txt_attack_3_name" class="data" /></td>
+                  <td class="bonus"><input id="txt_attack_3_bonus" class="data" /></td>
+                  <td class="damage"><input id="txt_attack_3_dmg" class="data" /></td>
+                </tr>
+              </tbody>
+            </table>
+            <span>Attacks &amp; Spellcasting</span>
+          </div>
+        </div> <!-- combat stats col -->
+        <div class="background col span_3_of_9">
+          <div class="personality_traits">
+            <textarea id="txt_personality_traits" class="data"></textarea>
+            <span class="label">Personality Traits</span>
+          </div>
+          <div class="ideals">
+            <textarea id="txt_ideals" class="data"></textarea>
+            <span class="label">Ideals</span>
+          </div>
+          <div class="bonds">
+            <textarea id="txt_bonds" class="data"></textarea>
+            <span class="label">Bonds</span>
+          </div>
+          <div class="flaws">
+            <textarea id="txt_flaws" class="data"></textarea>
+            <span class="label">Flaws</span>
+          </div>
+          <div class="features_traits">
+            <textarea id="txt_features_traits" class="data"></textarea>
+            <span class="label">Features &amp; Traits</span>
+          </div>
+        </div> <!-- background deets -->
+      </div> <!-- section group -->
+      <div class="section group">
+        <div class="col span_3_of_9">
+          <div class="passive_perception">
+            <input id="txt_passive_perception" class="data" />
+            <span class="label">Passive Perception (Wisdom)</span>
+          </div>
+          <div class="proficiencies_languages">
+            <textarea id="txt_proficiencies_languages" class="data"></textarea>
+            <span class="label">Other Proficiencies &amp; Languages</span>
+          </div>
+        </div>
+        <div class="col span_3_of_9">
+          <div class="money">
+            <div><span>CP</span><input id="txt_money_cp" class="data" /></div>
+            <div><span>SP</span><input id="txt_money_sp" class="data" /></div>
+            <div><span>EP</span><input id="txt_money_ep" class="data" /></div>
+            <div><span>GP</span><input id="txt_money_gp" class="data" /></div>
+            <div><span>PP</span><input id="txt_money_pp" class="data" /></div>
+          </div>
+          <div class="equipment">
+            <textarea id="txt_equipment" class="data"></textarea>
+            <span class="label">Equipment</span>
+          </div>
+        </div>
+      </div> <!-- section group --> 
+      <div class="section group spell_stats">
+        <div class="col span_3_of_9">
+          <span>Spell attack bonus:</span>
+          <input id="txt_spell_attack" class="data" />
+        </div>
+        <div class="col span_3_or_9">
+          <span>Spell save DC:</span>
+          <input id="txt_spell_dc" class="data" />
+        </div>
+      </div>
+      <div class="section group">
+        <div class="col span_3_of_9">
+          <div class="spells spells_0">
+            <div class="header">
+              <span>0</span>
+              <span>Cantrips</span>
+            </div>
+            <input id="spells_0_1" class="spell data" />
+            <input id="spells_0_2" class="spell data" />
+            <input id="spells_0_3" class="spell data" />
+            <input id="spells_0_4" class="spell data" />
+            <input id="spells_0_5" class="spell data" />
+            <input id="spells_0_6" class="spell data" />
+            <input id="spells_0_7" class="spell data" />
+            <input id="spells_0_8" class="spell data" />
+          </div>
+          <div class="spells spells_1">
+            <div class="header">
+              <span>1</span>
+              <input id="spells_1_slots_total" class="spell_slots_total data" />
+              <input id="spells_1_slots_used" class="spell_slots_used data" />
+            </div>
+            <p class="spell">
+              <input type="checkbox" id="spells_1_1_prepared" class="data" />
+              <input id="spells_1_1" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_1_2_prepared" class="data" />
+              <input id="spells_1_2" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_1_3_prepared" class="data" />
+              <input id="spells_1_3" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_1_4_prepared" class="data" />
+              <input id="spells_1_4" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_1_5_prepared" class="data" />
+              <input id="spells_1_5" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_1_6_prepared" class="data" />
+              <input id="spells_1_6" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_1_7_prepared" class="data" />
+              <input id="spells_1_7" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_1_8_prepared" class="data" />
+              <input id="spells_1_8" class="data" />
+            </p>
+          </div>
+          <div class="spells spells_2">
+            <div class="header">
+              <span>2</span>
+              <input id="spells_2_slots_total" class="spell_slots_total data" />
+              <input id="spells_2_slots_used" class="spell_slots_used data" />
+            </div>
+            <p class="spell">
+              <input type="checkbox" id="spells_2_1_prepared" class="data" />
+              <input id="spells_2_1" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_2_2_prepared" class="data" />
+              <input id="spells_2_2" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_2_3_prepared" class="data" />
+              <input id="spells_2_3" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_2_4_prepared" class="data" />
+              <input id="spells_2_4" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_2_5_prepared" class="data" />
+              <input id="spells_2_5" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_2_6_prepared" class="data" />
+              <input id="spells_2_6" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_2_7_prepared" class="data" />
+              <input id="spells_2_7" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_2_8_prepared" class="data" />
+              <input id="spells_2_8" class="data" />
+            </p>
+          </div>
+        </div> <!-- spells col 1 -->
+        <div class="col span_3_of_9">
+          <div class="spells spells_3">
+            <div class="header">
+              <span>3</span>
+              <input id="spells_3_slots_total" class="spell_slots_total data" />
+              <input id="spells_3_slots_used" class="spell_slots_used data" />
+            </div>
+            <p class="spell">
+              <input type="checkbox" id="spells_3_1_prepared" class="data" />
+              <input id="spells_3_1" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_3_2_prepared" class="data" />
+              <input id="spells_3_2" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_3_3_prepared" class="data" />
+              <input id="spells_3_3" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_3_4_prepared" class="data" />
+              <input id="spells_3_4" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_3_5_prepared" class="data" />
+              <input id="spells_3_5" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_3_6_prepared" class="data" />
+              <input id="spells_3_6" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_3_7_prepared" class="data" />
+              <input id="spells_3_7" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_3_8_prepared" class="data" />
+              <input id="spells_3_8" class="data" />
+            </p>
+          </div>
+          <div class="spells spells_4">
+            <div class="header">
+              <span>4</span>
+              <input id="spells_4_slots_total" class="spell_slots_total data" />
+              <input id="spells_4_slots_used" class="spell_slots_used data" />
+            </div>
+            <p class="spell">
+              <input type="checkbox" id="spells_4_1_prepared" class="data" />
+              <input id="spells_4_1" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_4_2_prepared" class="data" />
+              <input id="spells_4_2" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_4_3_prepared" class="data" />
+              <input id="spells_4_3" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_4_4_prepared" class="data" />
+              <input id="spells_4_4" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_4_5_prepared" class="data" />
+              <input id="spells_4_5" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_4_6_prepared" class="data" />
+              <input id="spells_4_6" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_4_7_prepared" class="data" />
+              <input id="spells_4_7" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_4_8_prepared" class="data" />
+              <input id="spells_4_8" class="data" />
+            </p>
+          </div>
+          <div class="spells spells_5">
+            <div class="header">
+              <span>5</span>
+              <input id="spells_5_slots_total" class="spell_slots_total data" />
+              <input id="spells_5_slots_used" class="spell_slots_used data" />
+            </div>
+            <p class="spell">
+              <input type="checkbox" id="spells_5_1_prepared" class="data" />
+              <input id="spells_5_1" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_5_2_prepared" class="data" />
+              <input id="spells_5_2" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_5_3_prepared" class="data" />
+              <input id="spells_5_3" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_5_4_prepared" class="data" />
+              <input id="spells_5_4" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_5_5_prepared" class="data" />
+              <input id="spells_5_5" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_5_6_prepared" class="data" />
+              <input id="spells_5_6" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_5_7_prepared" class="data" />
+              <input id="spells_5_7" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_5_8_prepared" class="data" />
+              <input id="spells_5_8" class="data" />
+            </p>
+          </div>
+        </div> <!-- spells col 2 -->
+        <div class="col span_3_of_9">
+          <div class="spells spells_6">
+            <div class="header">
+              <span>6</span>
+              <input id="spells_6_slots_total" class="spell_slots_total data" />
+              <input id="spells_6_slots_used" class="spell_slots_used data" />
+            </div>
+            <p class="spell">
+              <input type="checkbox" id="spells_6_1_prepared" class="data" />
+              <input id="spells_6_1" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_6_2_prepared" class="data" />
+              <input id="spells_6_2" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_6_3_prepared" class="data" />
+              <input id="spells_6_3" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_6_4_prepared" class="data" />
+              <input id="spells_6_4" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_6_5_prepared" class="data" />
+              <input id="spells_6_5" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_6_6_prepared" class="data" />
+              <input id="spells_6_6" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_6_7_prepared" class="data" />
+              <input id="spells_6_7" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_6_8_prepared" class="data" />
+              <input id="spells_6_8" class="data" />
+            </p>
+          </div>
+          <div class="spells spells_7">
+            <div class="header">
+              <span>7</span>
+              <input id="spells_7_slots_total" class="spell_slots_total data" />
+              <input id="spells_7_slots_used" class="spell_slots_used data" />
+            </div>
+            <p class="spell">
+              <input type="checkbox" id="spells_7_1_prepared" class="data" />
+              <input id="spells_7_1" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_7_2_prepared" class="data" />
+              <input id="spells_7_2" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_7_3_prepared" class="data" />
+              <input id="spells_7_3" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_7_4_prepared" class="data" />
+              <input id="spells_7_4" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_7_5_prepared" class="data" />
+              <input id="spells_7_5" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_7_6_prepared" class="data" />
+              <input id="spells_7_6" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_7_7_prepared" class="data" />
+              <input id="spells_7_7" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_7_8_prepared" class="data" />
+              <input id="spells_7_8" class="data" />
+            </p>
+          </div>
+          <div class="spells spells_8">
+            <div class="header">
+              <span>8</span>
+              <input id="spells_8_slots_total" class="spell_slots_total data" />
+              <input id="spells_8_slots_used" class="spell_slots_used data" />
+            </div>
+            <p class="spell">
+              <input type="checkbox" id="spells_8_1_prepared" class="data" />
+              <input id="spells_8_1" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_8_2_prepared" class="data" />
+              <input id="spells_8_2" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_8_3_prepared" class="data" />
+              <input id="spells_8_3" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_8_4_prepared" class="data" />
+              <input id="spells_8_4" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_8_5_prepared" class="data" />
+              <input id="spells_8_5" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_8_6_prepared" class="data" />
+              <input id="spells_8_6" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_8_7_prepared" class="data" />
+              <input id="spells_8_7" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_8_8_prepared" class="data" />
+              <input id="spells_8_8" class="data" />
+            </p>
+          </div>
+          <div class="spells spells_9">
+            <div class="header">
+              <span>9</span>
+              <input id="spells_9_slots_total" class="spell_slots_total data" />
+              <input id="spells_9_slots_used" class="spell_slots_used data" />
+            </div>
+            <p class="spell">
+              <input type="checkbox" id="spells_9_1_prepared" class="data" />
+              <input id="spells_9_1" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_9_2_prepared" class="data" />
+              <input id="spells_9_2" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_9_3_prepared" class="data" />
+              <input id="spells_9_3" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_9_4_prepared" class="data" />
+              <input id="spells_9_4" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_9_5_prepared" class="data" />
+              <input id="spells_9_5" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_9_6_prepared" class="data" />
+              <input id="spells_9_6" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_9_7_prepared" class="data" />
+              <input id="spells_9_7" class="data" />
+            </p>
+            <p class="spell">
+              <input type="checkbox" id="spells_9_8_prepared" class="data" />
+              <input id="spells_9_8" class="data" />
+            </p>
+          </div>
+        </div> <!-- spells col 3 -->
+      </div> <!-- section group -->
+      <div class="section group">
+        <div class="col span_3_of_9 loot">
+          <span class="header">Loot</span>
+          <textarea id="loot" class="data"></textarea>
+        </div> <!-- loot -->
+        <div class="col span_6_of_9 notes">
+          <span class="header">Notes</span>
+          <textarea id="notes" class="data"></textarea>
+        </div> <!-- notes -->
+      </div> <!-- section group -->
+    </div> <!-- application -->
+  </body>
+</html>
